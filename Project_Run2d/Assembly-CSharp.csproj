@@ -60,8 +60,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GGEZ\PerfectPixelCamera\Demo\Assets\ZoomDemo.cs" />
-    <Compile Include="Assets\GGEZ\PerfectPixelCamera\Scripts\PerfectPixelCamera.cs" />
     <Compile Include="Assets\Script\Background.cs" />
     <Compile Include="Assets\Script\Game_system.cs" />
     <Compile Include="Assets\Script\Obstacles.cs" />
@@ -69,7 +67,6 @@
     <Compile Include="Assets\Script\Rain.cs" />
     <Compile Include="Assets\Script\Spawner.cs" />
     <Compile Include="Assets\Script\Weather.cs" />
-    <None Include="Assets\GGEZ\PerfectPixelCamera\README.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/구건모/Desktop/개발/Ruen_project/Project_Run2d/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

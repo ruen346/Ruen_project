@@ -7,7 +7,12 @@ public class Obstacles : MonoBehaviour
     public float speed;
     public float angle = 0;
     public int destroy_time = 5;
+
     public bool turn_true = false;
+    public bool down_true = false;
+    public bool updown_true = false;
+
+    int updown_switch = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +26,28 @@ public class Obstacles : MonoBehaviour
         if (turn_true)
         {
             transform.Rotate(Vector3.forward, -angle);
+        }
+        if (down_true)
+        {
+            if(transform.position.x < 2.5 && transform.position.y > -0.7)
+                transform.Translate(0, (-speed / 2) * Time.deltaTime, 0);
+        }
+        if (updown_true)
+        {
+            if(updown_switch == 0)
+            {
+                if (transform.position.y > -0.8)
+                    transform.Translate(0, (-speed / 2) * Time.deltaTime, 0);
+                else
+                    updown_switch = 1;
+            }
+            else
+            {
+                if (transform.position.y < 0.4)
+                    transform.Translate(0, (speed / 2) * Time.deltaTime, 0);
+                else
+                    updown_switch = 0;
+            }    
         }
 
         transform.Translate(-speed * Time.deltaTime, 0, 0);
