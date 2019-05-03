@@ -23,17 +23,15 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && transform.position.y <= -0.45)
             jump = true;
 
-        Debug.Log(Mathf.Abs(transform.rotation.z));
-
         if (transform.rotation.z > 0.5 && transform.position.y <= -0.45)
         {
             jump = false;
-            transform.Translate(0, 2 * Time.deltaTime, 0);
+            transform.Translate(0, 3 * Time.deltaTime, 0);
         }
         else if (transform.rotation.z < -0.5 && transform.position.y <= -0.45)
         {
             jump = false;
-            transform.Translate(0, -2 * Time.deltaTime, 0);
+            transform.Translate(0, -3 * Time.deltaTime, 0);
         }
         //뒤집혔을 경우도 해야됨
     }

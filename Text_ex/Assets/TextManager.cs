@@ -40,11 +40,22 @@ public class TextManager : MonoBehaviour
 
         foreach (string script in TextList)
         {
-            string Name_cut = script.Substring(0,script.IndexOf(':'));
-            string Messge_cut = script.Substring(script.IndexOf(':') + 1);
+            if (script.IndexOf('/') == 0) // 선택지 
+            {
+                string Name_cut = "choice";
+                string Messge_cut = script.Substring(1);
 
-            Name.Add(Name_cut);
-            Messge.Add(Messge_cut);
+                Name.Add(Name_cut);
+                Messge.Add(Messge_cut);
+            }
+            else // 대화
+            {
+                string Name_cut = script.Substring(0, script.IndexOf(':'));
+                string Messge_cut = script.Substring(script.IndexOf(':') + 1);
+
+                Name.Add(Name_cut);
+                Messge.Add(Messge_cut);
+            }
         }
 
         StartDialogue(); // 시작해버림
@@ -77,12 +88,20 @@ public class TextManager : MonoBehaviour
         }
 
         string Name_eq = Name_q.Dequeue();
-        Name_Text.text = Name_eq;
-
         string Messge_wq = Messge_q.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(Messge_wq));
+
+        if (Name_eq == "choice")
+        {
+
         }
+        else
+        {
+            Name_Text.text = Name_eq;
+
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(Messge_wq));
+        }
+    }
 
     IEnumerator TypeSentence(string sentence) // 한글자씩 출력
     {
