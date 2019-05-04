@@ -5,6 +5,8 @@ using UnityEngine;
 public class Background : MonoBehaviour
 {
     public float speed;
+    public float start;
+    public float end;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,7 @@ public class Background : MonoBehaviour
     {
         transform.Translate(-speed * Time.deltaTime, 0, 0);
 
-        if (transform.position.x < -6)
-            transform.Translate(12, 0, 0);
+        if (transform.position.x < start)
+            transform.Translate(end, 0, 0);
     }
 }

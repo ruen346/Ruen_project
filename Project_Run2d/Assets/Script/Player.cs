@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Player : MonoBehaviour
 {
     public float jump_power = 1;
@@ -20,20 +19,17 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && transform.position.y <= -0.45)
+        if (Input.GetMouseButtonDown(0) && transform.position.y <= -0.45 && (transform.rotation.z < 0.5 && transform.rotation.z > -0.5))
             jump = true;
+        if(transform.rotation.z > 0.5 || transform.rotation.z < -0.5)
+        {
+            transform.Translate(-3 * Time.deltaTime, 0, 0, Space.World);
+        }
 
-        if (transform.rotation.z > 0.5 && transform.position.y <= -0.45)
+        if (transform.position.x < -4.5 && Game_system.get_play() == 1)
         {
-            jump = false;
-            transform.Translate(0, 3 * Time.deltaTime, 0);
+            FindObjectOfType<Game_system>().game_end();
         }
-        else if (transform.rotation.z < -0.5 && transform.position.y <= -0.45)
-        {
-            jump = false;
-            transform.Translate(0, -3 * Time.deltaTime, 0);
-        }
-        //뒤집혔을 경우도 해야됨
     }
 
     void FixedUpdate()
