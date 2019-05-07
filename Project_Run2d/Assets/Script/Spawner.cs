@@ -11,7 +11,9 @@ public class Spawner : MonoBehaviour
     public GameObject spawn_prefab5;
     public GameObject spawn_prefab6;
 
-    public float spawn_delay;
+    bool spawn_delay = true;
+
+    public float delay_time;
 
     IEnumerator Start()
     {
@@ -19,32 +21,37 @@ public class Spawner : MonoBehaviour
         {
             int level = Game_system.get_level(); // level별 종류추가 예정!
 
-            int spawn_choose = Random.Range(1, 7);
-
-            switch(spawn_choose)
+            if (spawn_delay == false)
             {
-                case 1:
-                    Instantiate(spawn_prefab1, new Vector2(4.5f, -0.7f), transform.rotation);
-                    break;
-                case 2:
-                    Instantiate(spawn_prefab2, new Vector2(4.5f, -0.7f), transform.rotation);
-                    break;
-                case 3:
-                    Instantiate(spawn_prefab3, new Vector2(4.5f, 0.3f), transform.rotation);
-                    break;
-                case 4:
-                    Instantiate(spawn_prefab4, new Vector2(4.5f, -1.22f), transform.rotation);
-                    break;
-                case 5:
-                    Instantiate(spawn_prefab5, new Vector2(4.5f, 0.3f), transform.rotation);
-                    break;
-                case 6:
-                    float make_y = Random.Range(-0.7f, 0.3f);
-                    Instantiate(spawn_prefab6, new Vector2(4.5f, make_y), transform.rotation);
-                    break;
+                int spawn_choose = Random.Range(1, 7);
+
+                switch (spawn_choose)
+                {
+                    case 1:
+                        Instantiate(spawn_prefab1, new Vector2(4.5f, -0.7f), transform.rotation);
+                        break;
+                    case 2:
+                        Instantiate(spawn_prefab2, new Vector2(4.5f, -0.7f), transform.rotation);
+                        break;
+                    case 3:
+                        Instantiate(spawn_prefab3, new Vector2(4.5f, 0.3f), transform.rotation);
+                        break;
+                    case 4:
+                        Instantiate(spawn_prefab4, new Vector2(4.5f, -1.22f), transform.rotation);
+                        break;
+                    case 5:
+                        Instantiate(spawn_prefab5, new Vector2(4.5f, 0.3f), transform.rotation);
+                        break;
+                    case 6:
+                        float make_y = Random.Range(-0.7f, 0.3f);
+                        Instantiate(spawn_prefab6, new Vector2(4.5f, make_y), transform.rotation);
+                        break;
+                }
             }
+            else
+                spawn_delay = false;
             
-            yield return new WaitForSeconds(spawn_delay + Random.Range(-0.2f, 0.2f));
+            yield return new WaitForSeconds(delay_time + Random.Range(-0.2f, 0.2f));
         }
     }
 

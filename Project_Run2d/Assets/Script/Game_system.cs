@@ -9,7 +9,7 @@ public class Game_system : MonoBehaviour
     public Text End_Score_text;
 
     static int score = 0;
-    static int high_score = PlayerPrefs.GetInt("high_score", 0);
+    static int high_score = 0;
     static int level = 1;
 
     static int game_play = 1;
@@ -17,6 +17,8 @@ public class Game_system : MonoBehaviour
 
     IEnumerator Start()
     {
+        high_score = PlayerPrefs.GetInt("high_score", 0);
+
         Score_text.text = "Score : " + score + " ";
 
         while (game_play == 1)
