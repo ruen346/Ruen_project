@@ -10,6 +10,21 @@ public class Player : MonoBehaviour
     Vector2 movement;
     bool jump = false;
 
+    float slide_delay = 0;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Slide_back")
+        {
+            if(slide_delay == 0)
+            {
+                transform.Rotate(0, 0, 30);
+                collision.transform.Translate(-0.8f, 0, 0);
+                slide_delay = 1;
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

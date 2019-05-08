@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
     public GameObject spawn_prefab4;
     public GameObject spawn_prefab5;
     public GameObject spawn_prefab6;
+    public GameObject spawn_prefab7;
 
     bool spawn_delay = true;
 
@@ -23,7 +24,8 @@ public class Spawner : MonoBehaviour
 
             if (spawn_delay == false)
             {
-                int spawn_choose = Random.Range(1, 7);
+                //int spawn_choose = Random.Range(1, 8);
+                int spawn_choose = 7;
 
                 switch (spawn_choose)
                 {
@@ -45,6 +47,9 @@ public class Spawner : MonoBehaviour
                     case 6:
                         float make_y = Random.Range(-0.7f, 0.3f);
                         Instantiate(spawn_prefab6, new Vector2(4.5f, make_y), transform.rotation);
+                        break;
+                    case 7:
+                        Instantiate(spawn_prefab7, new Vector2(4.5f, -1.1f), transform.rotation);
                         break;
                 }
             }

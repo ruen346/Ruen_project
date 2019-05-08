@@ -26,9 +26,6 @@ public class Game_system : MonoBehaviour
             score += 10;
             Score_text.text = "Score : " + score + " ";
 
-            if (score == 200)
-                level++;
-
             yield return new WaitForSeconds(0.5f);
         }
     }
@@ -52,6 +49,11 @@ public class Game_system : MonoBehaviour
     public static int get_play()
     {
         return game_play;
+    }
+
+    public static void level_up()
+    {
+        level++;
     }
 
     public void game_end()

@@ -8,11 +8,12 @@ public class Obstacles : MonoBehaviour
     public float angle = 0;
     public int destroy_time = 5;
 
-    public bool turn_true = false;
-    public bool down_true = false;
-    public bool updown_true = false;
-
+    public bool turn_true = false; // 장애물이 돈다
+    public bool down_true = false; // 장애물이 중간에 내려온다
+    public bool updown_true = false; // 장애물이 위아래로 움직인다
+    
     int updown_switch = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +28,13 @@ public class Obstacles : MonoBehaviour
         {
             transform.Rotate(Vector3.forward, -angle);
         }
+
         if (down_true)
         {
-            if(transform.position.x < 2.5 && transform.position.y > -0.7)
+            if(transform.position.x < 3 && transform.position.y > -0.7)
                 transform.Translate(0, (-speed / 2) * Time.deltaTime, 0);
         }
+
         if (updown_true)
         {
             if(updown_switch == 0)
