@@ -8,10 +8,15 @@ public class Background : MonoBehaviour
     public float start;
     public float end;
 
+    public bool return_trans = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (return_trans == true)
+        {
+            Destroy(gameObject, 5);
+        }
     }
 
     // Update is called once per frame
@@ -19,7 +24,10 @@ public class Background : MonoBehaviour
     {
         transform.Translate(-speed * Time.deltaTime, 0, 0);
 
-        if (transform.position.x < start)
-            transform.Translate(end, 0, 0);
+        if (return_trans == false)
+        {
+            if (transform.position.x < start)
+                transform.Translate(end, 0, 0);
+        }
     }
 }

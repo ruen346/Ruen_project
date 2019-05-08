@@ -5,6 +5,8 @@ public class Player : MonoBehaviour
 {
     public float jump_power = 1;
 
+    Collider2D this_collision;
+
     Rigidbody2D rigid;
 
     Vector2 movement;
@@ -14,14 +16,10 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Slide_back")
+        if (slide_delay == 0 && collision.tag == "Slide_back")
         {
-            if(slide_delay == 0)
-            {
-                transform.Rotate(0, 0, 30);
-                collision.transform.Translate(-0.8f, 0, 0);
-                slide_delay = 1;
-            }
+            this_collision = collision;
+            slide_delay = 10;    
         }
     }
 
@@ -44,6 +42,14 @@ public class Player : MonoBehaviour
         if (transform.position.x < -4.5 && Game_system.get_play() == 1)
         {
             FindObjectOfType<Game_system>().game_end();
+        }
+
+        if(slide_delay != 0)
+        {
+            transform.Rotate(0, 0, 7);
+            transform.Translate(-0.13f, 0, 0, Space.World);
+            this_collision.transform.Translate(-0.13f, 0, 0);
+            slide_delay--;
         }
     }
 
