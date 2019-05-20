@@ -44,11 +44,11 @@ public class Player : MonoBehaviour
             FindObjectOfType<Game_system>().game_end();
         }
 
-        if(slide_delay != 0)
+        if(slide_delay != 0) // 미끄러짐
         {
-            transform.Rotate(0, 0, 7);
-            transform.Translate(-0.13f, 0, 0, Space.World);
-            this_collision.transform.Translate(-0.13f, 0, 0);
+            transform.Rotate(0, 0, 3);
+            transform.Translate(-0.13f, 0.15f, 0, Space.World);
+            this_collision.transform.Translate(-0.3f, 0, 0);
             slide_delay--;
         }
     }
