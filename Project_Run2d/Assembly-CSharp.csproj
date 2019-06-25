@@ -70,7 +70,10 @@
     <Compile Include="Assets\Script\Rain.cs" />
     <Compile Include="Assets\Script\Scene_system.cs" />
     <Compile Include="Assets\Script\Score_board.cs" />
+    <Compile Include="Assets\Script\Sound.cs" />
+    <Compile Include="Assets\Script\Sound_control.cs" />
     <Compile Include="Assets\Script\Spawner.cs" />
+    <Compile Include="Assets\Script\Text_manager.cs" />
     <Compile Include="Assets\Script\Weather.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>G:/Project/Ruen_project/Project_Run2d/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

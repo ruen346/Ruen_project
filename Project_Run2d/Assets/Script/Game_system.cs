@@ -5,26 +5,37 @@ using UnityEngine.UI;
 
 public class Game_system : MonoBehaviour
 {
-    public Text Score_text;
-    public Text End_Score_text;
-
     static int score = 0;
     static int high_score = 0;
     static int level = 1;
+    static bool sounds = true;
 
     static int game_play = 1;
-    
+
+
+    private void Awake()
+    {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("System");
+
+        if (objs.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     IEnumerator Start()
     {
+        score = 0;
+        level = 1;
+        game_play = 0;
         high_score = PlayerPrefs.GetInt("high_score", 0);
 
-        Score_text.text = "Score : " + score + " ";
-
-        while (game_play == 1)
+        while (true)
         {
-            score += 10;
-            Score_text.text = "Score : " + score + " ";
+            if(game_play == 1) 
+                score += 10;
 
             yield return new WaitForSeconds(0.5f);
         }
@@ -33,12 +44,18 @@ public class Game_system : MonoBehaviour
     public static void reset()
     {
         score = 0;
+        level = 0;
         game_play = 1;
     }
 
-    public static int get_socre()
+    public static int get_score()
     {
         return score;
+    }
+
+    public static int get_high_score()
+    {
+        return high_score;
     }
 
     public static int get_level()
@@ -49,6 +66,16 @@ public class Game_system : MonoBehaviour
     public static int get_play()
     {
         return game_play;
+    }
+
+    public static bool get_sounds()
+    {
+        return sounds;
+    }
+
+    public static void set_sounds(bool on_sounds)
+    {
+        sounds = on_sounds;
     }
 
     public static void level_up()
@@ -66,12 +93,8 @@ public class Game_system : MonoBehaviour
             PlayerPrefs.SetInt("high_score", high_score);
         }
 
-        End_Score_text.text = "Score : " + score + "\nHigh Score : " + high_score;
-
         FindObjectOfType<Score_board>().move();
     }
-
-    
 
     // Update is called once per frame
     void Update()
