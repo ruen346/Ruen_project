@@ -8,7 +8,7 @@ public class Game_system : MonoBehaviour
     static int score = 0;
     static int high_score = 0;
     static int level = 1;
-    static bool sounds = true;
+    static bool sounds = true; // 사운드 온오프
 
     static int game_play = 1;
 

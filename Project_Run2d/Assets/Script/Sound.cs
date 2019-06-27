@@ -33,6 +33,7 @@ public class Sound : MonoBehaviour
         {
             Game_system.set_sounds(false);
             this.GetComponent<Image>().sprite = sprite_off;
+            //Sound_control.volume();
         }
         else
         {
