@@ -808,6 +808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music_clip: {fileID: 8300000, guid: 9788c684627b845429412f122e03206b, type: 3}
+  max_volume: 0.5
   loop: 1
 --- !u!1 &1268824482
 GameObject:

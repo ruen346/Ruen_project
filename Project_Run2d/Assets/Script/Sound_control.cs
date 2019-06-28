@@ -6,8 +6,9 @@ public class Sound_control : MonoBehaviour
 {
     private AudioSource music;
     public AudioClip music_clip;
+    public float max_volume;
     public bool loop;
-    int volume_num;
+    float volume_num;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class Sound_control : MonoBehaviour
         music.Play();
 
         if (Game_system.get_sounds() == true)
-            volume_num = 1;
+            volume_num = max_volume;
         else
             volume_num = 0;
 
@@ -29,7 +30,7 @@ public class Sound_control : MonoBehaviour
     public void volume()
     {
         if (Game_system.get_sounds() == true)
-            volume_num = 1;
+            volume_num = max_volume;
         else
             volume_num = 0;
 

@@ -76,6 +76,7 @@ public class Game_system : MonoBehaviour
     public static void set_sounds(bool on_sounds)
     {
         sounds = on_sounds;
+        FindObjectOfType<Sound_control>().volume();
     }
 
     public static void level_up()
